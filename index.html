@@ -40,7 +40,12 @@
 			
 		],
 		'assets/scripts/app.js'
-	], true);
+	], 
+	true,
+	function() { 
+		//Once our load is complete, set focus onto our virtual console.
+		try { app.cmd.focusInput() } catch(e) {}
+	});
 </script>
 </script>
 </html>

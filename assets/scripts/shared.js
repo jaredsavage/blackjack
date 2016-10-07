@@ -136,7 +136,7 @@ window.シ = window.シ || {
 	 * @param {string[[]]} input 
 	 * @param {boolean}    showLoader 
 	 */
-	load: function(input, showLoader) {
+	load: function(input, showLoader, callback) {
 		
 		//Todo: clean this up, use the node creation helpers once they're ready
 		if(showLoader) {
@@ -187,9 +187,14 @@ window.シ = window.シ || {
 							loaderBoxInner.style.opacity = 0;
 							loaderBox.style.opacity = 0;
 							loaderBox.style.pointerEvents = 'none';
+							
+
 							setTimeout(function() {
 								document.body.removeChild(loaderBox);
-							},5000)
+								if(シ.isFunction(callback)) {
+									callback();
+								};
+							},4000)
 						}
 						
 						innerLoad(input2); 
