@@ -68,7 +68,7 @@
 		position:relative;
 		transform: rotateX(0deg) translate3d(0px,0px,0px) scale(1);
 		transform-origin: 50% 50%;
-		transition: transform ease-in-out .7s, background-size ease-in-out .7s;
+		transition: transform ease-in-out 1.5s, background-size ease-in-out 1.5s;
 		transition-delay: 0s;
 	}
 
@@ -88,7 +88,7 @@
 
 	.cmdBox {
 		transform: translate3d(0px,0px,0px);
-		transition: transform ease-in-out .7s;
+		transition: transform ease-in-out 1.5s;
 		transform-origin: 50% 50%;
 		
 		transition-delay: 0s;
