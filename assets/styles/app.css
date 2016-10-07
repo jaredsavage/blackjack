@@ -13,8 +13,7 @@ body, html {
 }
 
 /*
-	Loading box + spinner. This was fun to play with. 
-	Todo: Play around with different sequences
+	Loading box + spinner
 */
 .loaderBox, .loaderBoxInner {
 	left:0px; right:0px; top:0px; bottom:0px;
@@ -42,7 +41,7 @@ body, html {
 		transform-origin: 50% 50%;
 		left:50%;
 		top:50%;
-		margin:-50px;
+		margin:-20px;
 		animation: orbit 2s infinite alternate;
 		box-shadow: 0px 0px 0px 2px rgba(255,255,255,1);
 	}
@@ -76,12 +75,8 @@ body, html {
 	}
 
 	/* 
-		TODO: clean this up to not use !important, and not be a bunch of hacky hacks.
-		Was really just done as a bonus to show off some CSS stuff ala CSS zen garden, without any DOM changes.
-		I didn't want this to be part of the CommandLine module, but maybe it should be cleaned up and included?
-		
-		¯\_(ツ)_/¯
-		
+		todo: clean this up to not use important. 
+		I didn't want this styling to be part of the CommandLine code
 	*/
 	
 	body.focus .cmdBox {
@@ -117,17 +112,17 @@ body, html {
 		color: rgba(59,253,141,.75) !important;
 		font-family: Courier,"Courier New", Consolas, monospace !important;
 		font-size: 16px !important;
-		animation: glow .015s infinite alternate ease-in-out; /* 60hzish */
+		animation: glow .015s infinite alternate ease-in-out; /* 60hz */
 	}
-		.cmdDisplay {
-			background-color: transparent !important;
-			margin: 0px !important;
-			padding: 30px 30px 0px 30px !important;
-		}
-		.cmdInput {
-			background-color: transparent !important;
-			padding: 0px 30px 30px 30px !important;
-		}
+	.cmdDisplay {
+		background-color: transparent !important;
+		margin: 0px !important;
+		padding: 30px 30px 0px 30px !important;
+	}
+	.cmdInput {
+		background-color: transparent !important;
+		padding: 0px 30px 30px 30px !important;
+	}
 	
 	@keyframes glow {
 		0% { text-shadow: 0px 0px 9px rgba(144, 245, 131, 1); background-color: rgba(144, 245, 131, 0.15) }

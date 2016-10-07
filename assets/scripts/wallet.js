@@ -4,11 +4,11 @@
 function Wallet(options) {
 	if (!(this instanceof arguments.callee)) throw new Error("Please use 'new' operator when calling " + arguments.callee);
 	
+	options = options || {};
 	var pri = {};
 	var pub = this;
-	    pub.options = options || {};
 	
-		pub.balance = typeof pub.options.balance === "number" ? pub.options.balance : 0;
+	pub.balance = typeof options.balance === "number" ? options.balance : 0;
 	
 }
 

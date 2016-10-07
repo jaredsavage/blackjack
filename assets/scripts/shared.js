@@ -9,10 +9,10 @@ window.シ = window.シ || {
 	 * @param {boolean} remove     -- whether to add/remove classname
 	 */
 	classNameChange: function(node, className, add) {
-		//WIP
+		//WIP, not used yet
 		
 		if(arguments.length > 3){
-			throw new Error("シ.classNameChange() requires max 3 params")
+			throw new Error("シ.classNameChange() requires 3 params")
 		}
 			
 		if(node && node.nodeType !== 1) {
@@ -53,7 +53,8 @@ window.シ = window.シ || {
 	/**
 	 * Provided a url, generates the appropriate tag and appends to head.
 	 * Used for bootstrap
-	 * @param {String} url 
+	 * @param {string}   url 
+	 * @param {function} callback 
 	 */
 	addTag: function(url, onload) {
 		
@@ -86,8 +87,8 @@ window.シ = window.シ || {
 	/**
 	 * Wrapper to simplify DOM node creation
 	 * @param  {string} nodeType
-	 * @param  {object} optional dstParent -- if supplied, we append the new element directly
 	 * @param  {object} attr -- array of key:value pairs, assigned to the new node
+	 * @param  {object} optional dstParent -- if supplied, we append the new element directly
 	 * @return {object} returns the new DOM element
 	 */
 	newNode: function(nodeType, attr, dstParent) {
@@ -132,7 +133,8 @@ window.シ = window.シ || {
 	/**
 	 * Provided an array of URLs, appends them to head. If an element is an array, the elements of that array are loaded in parallel
 	 * Used for bootstrap
-	 * @param {Array} input 
+	 * @param {string[[]]} input 
+	 * @param {boolean}    showLoader 
 	 */
 	load: function(input, showLoader) {
 		
@@ -159,7 +161,7 @@ window.シ = window.シ || {
 		}
 
 		var itemsToLoad = 0;
-		var itemsLoaded = 0;
+		var loadingComplete = false;
 		function innerLoad(input2) {
 			
 			if(input2.length === 0) {
@@ -180,7 +182,8 @@ window.シ = window.シ || {
 							loaderBoxInner.appendChild(document.createElement("br"));
 						}
 						
-						if(itemsToLoad === 0 && itemsLoaded === 0) {
+						if(itemsToLoad === 0 && !loadingComplete) {
+							loadingComplete = true;
 							loaderBoxInner.style.opacity = 0;
 							loaderBox.style.opacity = 0;
 							loaderBox.style.pointerEvents = 'none';
@@ -200,8 +203,8 @@ window.シ = window.シ || {
 	/**
 	 * Returns whether or not the element is a function
 	 * Source: Based on underscore's way of doing it
-	 * @param {Object} obj 
-	 * @return {Boolean}
+	 * @param  {object} obj 
+	 * @return {boolean}
 	 */
 	isFunction: function(obj) {
 	  return !!(obj && obj.constructor && obj.call && obj.apply);
@@ -211,8 +214,8 @@ window.シ = window.シ || {
 	 * Turns an Array of Arrays into a flat list of all possible combinations.
 	 * Used for calculating all of the Ace*Ace*Ace*King possible combinations
 	 * Source: Based one a comment on SO #15298912, modified for use here
-	 * @param {Array} inputArray 
-	 * @return {Boolean}
+	 * @param  {number[[]]} inputArray 
+	 * @return {boolean}
 	 */
 	twoDeeToDee: function(inArr) {
 		
@@ -238,8 +241,8 @@ window.シ = window.シ || {
 	
 	/**
 	 * Adds the numbers in an array
-	 * @param {Array} inArr 
-	 * @return {Number}
+	 * @param {number[]} inArr 
+	 * @return {number}
 	 */
 	sum: function(inArr) {
 		return inArr.reduce(function(a,b) {
@@ -250,9 +253,9 @@ window.シ = window.シ || {
 	/**
 	 * Wraps a supplied string or array of strings with a pretty border. 
 	 * Used for that old school console application feel.
-	 * @param {String|Array} input 
-	 * @param {Number} s -- Style of frame
-	 * @return {Array}
+	 * @param  {string|string[]} input 
+	 * @param  {number}          style -- Style of frame
+	 * @return {string[]}
 	 */
 	frameText : function(input, style) {
 		
